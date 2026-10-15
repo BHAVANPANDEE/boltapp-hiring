@@ -14,6 +14,8 @@ build/
 *.class
 *.jar
 *.war
+backend/data/
+data/
 
 # IDE and Editor
 .idea/
