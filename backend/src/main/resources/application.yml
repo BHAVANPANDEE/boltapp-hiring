@@ -5,10 +5,11 @@ spring:
   application:
     name: boltpay-backend
   datasource:
-    url: ${DATABASE_URL:jdbc:h2:file:./data/boltpay;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH}
-    username: ${DATABASE_USERNAME:sa}
-    password: ${DATABASE_PASSWORD:}
-    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+#    url: ${DATABASE_URL:jdbc:h2:file:./data/boltpay;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH}
+    url: ${DATABASE_URL}
+    password: ${DATABASE_PASSWORD}
+    username: ${DATABASE_USERNAME}
+    # driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
   jpa:
     hibernate:
       ddl-auto: update
