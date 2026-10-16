@@ -6,9 +6,9 @@ spring:
     name: boltpay-backend
 
   datasource:
-    url: "jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres?user=postgres.mkyhyscnndluzhytgyjq&password=Bhavan@2004Pande"
+    url: "jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres?sslmode=require"
     username: "postgres.mkyhyscnndluzhytgyjq"
-    password: "Bhavan@2004Pande"
+    password: "YOUR_NEW_DATABASE_PASSWORD"
     driver-class-name: org.postgresql.Driver
 
   jpa:
