@@ -29,7 +29,8 @@
 # Multi-stage Docker build for BoltPay Backend
 
 # Build stage
-FROM --platform=linux/arm64 maven:3.9-eclipse-temurin-21 AS build
+# Build stage
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 COPY pom.xml .
@@ -38,18 +39,16 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Production runtime stage
-FROM --platform=linux/arm64 eclipse-temurin:21-jre-alpine
+# Runtime stage
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-# Create non-root user
 RUN addgroup -S boltpay && adduser -S boltpay -G boltpay
 USER boltpay
 
 COPY --from=build /app/target/boltpay-backend-*.jar app.jar
 
-ENV PORT=8080
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
